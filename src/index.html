@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="fr-CA">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>RGRAPH</title>
+    <link rel="stylesheet" href="assets/styles/index.css">
+    <style>
+        #chart-container {
+            height: 500px;
+            width: 100px;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>Travail long 01 - 6 grapihiques rgraph</h1>
+        <nav id="navigation-principale">
+            <ul>
+                <li><a href="#article-graphique-1">Graphique 1</a></li>
+                <li><a href="#article-graphique-2">Graphique 2</a></li>
+                <li><a href="#article-graphique-3">Graphique 3</a></li>
+                <li><a href="#article-graphique-4">Graphique 4</a></li>
+                <li><a href="#article-graphique-5">Graphique 5</a></li>
+                <li><a href="#article-graphique-6">Graphique 6</a></li>
+            </ul>
+        </nav>
+    </header>
+    <main>
+        <article id="article-graphique-1">
+            <h2>Graphique 1</h2>
+            <canvas id="canvasTartre" width="350" height="250">
+                [No canvas support]
+            </canvas>
+        </article>
+        <article id="article-graphique-2">
+            <h2>Graphique 2</h2>
+            <div id="chart-container">
+            </div>
+        </article>
+        <article id="article-graphique-3">
+            <h2>Graphique 3</h2>
+        </article>
+        <article id="article-graphique-4">
+            <h2>Graphique 4</h2>
+        </article>
+        <article id="article-graphique-5">
+            <h2>Graphique 5</h2>
+        </article>
+        <article id="article-graphique-6">
+            <h2>Graphique 6</h2>
+        </article>
+    </main>
+    <footer>
+        <p>Cours de Production d'Interfaces Interactives Animées</p>
+        <p>Dale Limoges et Isabela Lara Martinez</p>
+        <p><time datetime="2021-07-16">2021-09-03</time></p>
+    </footer>
+    <script src="./assets/scripts/RGraph.common.core.js"></script>
+    <script src="./assets/scripts/RGraph.common.dynamic.js"></script>
+    <script src="./assets/scripts/RGraph.common.tooltips.js"></script>
+    <script src="./assets/scripts/RGraph.pie.js"></script>
+    <script src="./assets/scripts/RGraph.svg.common.core.js"></script>
+    <script src="./assets/scripts/RGraph.svg.common.tooltips.js"></script>
+    <script src="./assets/scripts/RGraph.svg.bar.js"></script>
+    <script src="./assets/scripts/index.js"></script>
+</body>
+</html>
