@@ -7,15 +7,22 @@
     <title>RGRAPH</title>
     <link rel="stylesheet" href="assets/styles/index.css">
     <style>
+
         #chart-container {
             height: 500px;
             width: 100px;
         }
+
+        #semicirculaire {
+            height: 250px;
+            width: 500px;
+        }
+
     </style>
 </head>
 <body>
     <header>
-        <h1>Travail long 01 - 6 grapihiques rgraph</h1>
+        <h1>Travail long 01 - 6 graphiques rgraph</h1>
         <nav id="navigation-principale">
             <ul>
                 <li><a href="#article-graphique-1">Graphique 1</a></li>
@@ -39,31 +46,52 @@
             <div id="chart-container">
             </div>
         </article>
+
+    <!--  Graphique 3 - Bar horizontal -->       
         <article id="article-graphique-3">
-            <h2>Graphique 3</h2>
+            <h2>Graphique 3 : Bar Horizontal</h2>
+            <canvas id="barhorizontal" width="600" height="400">
+                [No canvas support]
+            </canvas>
         </article>
+
+    <!--  Graphique 4 - Semicircular --> 
         <article id="article-graphique-4">
-            <h2>Graphique 4</h2>
+            <h2>Graphique 4 : Semi-circular Progress bar</h2>
+            <div id="semicirculaire"></div>
         </article>
+
+    <!--  Graphique 5 - Thermomètre -->    
         <article id="article-graphique-5">
-            <h2>Graphique 5</h2>
+            <h2>Graphique 5: Thermomètre</h2>
+            <canvas id="canvasThermometre" width="110" height="400">
+                [No canvas support]
+            </canvas>
         </article>
+
+
         <article id="article-graphique-6">
             <h2>Graphique 6</h2>
         </article>
     </main>
+    
     <footer>
         <p>Cours de Production d'Interfaces Interactives Animées</p>
         <p>Dale Limoges et Isabela Lara Martinez</p>
         <p><time datetime="2021-07-16">2021-09-03</time></p>
     </footer>
     <script src="./assets/scripts/RGraph.common.core.js"></script>
+    <script src="./assets/scripts/RGraph.svg.common.core.js"></script>
     <script src="./assets/scripts/RGraph.common.dynamic.js"></script>
     <script src="./assets/scripts/RGraph.common.tooltips.js"></script>
     <script src="./assets/scripts/RGraph.pie.js"></script>
-    <script src="./assets/scripts/RGraph.svg.common.core.js"></script>
     <script src="./assets/scripts/RGraph.svg.common.tooltips.js"></script>
     <script src="./assets/scripts/RGraph.svg.bar.js"></script>
+    <script src="./assets/scripts/RGraph.svg.semicircularprogress.js"></script>
+    <script src="./assets/scripts/RGraph.semicircularprogress.js"></script>
+    <script src="./assets/scripts/RGraph.thermometer.js"></script>
+    <script src="./assets/scripts/RGraph.bar.js"></script>
+    <script src="./assets/scripts/RGraph.hbar.js"></script>
     <script src="./assets/scripts/index.js"></script>
 </body>
 </html>
