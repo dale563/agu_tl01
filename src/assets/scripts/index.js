@@ -103,5 +103,133 @@ const dessinerMaBarVerticale = () => {
     }).grow();
 }
 
-dessinerMaTartre();
-dessinerMaBarVerticale();
+//Graphique 3 - BarHorizontal
+
+const dessinerMaBarHorizontal = () => {
+    //
+    // This the function that builds and returns the
+    // correct tooltip based on the group ID that is
+    // passed to it
+    function getTooltip(group)
+    {
+        var results = [
+            [86,'The "Ordinateur portable<br />majority with a total of 408 seats.'],
+            [81, 'The "Téléphone intelligent" campaign fought valiantly<br />but, alas, it was to no avail.']
+            [59, 'The "Tablette électronique" campaign fought valiantly<br />but, alas, it was to no avail.']
+            [21, 'The "Montre intelligent" campaign fought valiantly<br />but, alas, it was to no avail.']
+        ];
+
+        return 'Seats: <b>{1}</b><br /><span style="color: #ccc">{2}</span>'.format(
+            results[group][0],
+            results[group][1],
+            results[group][2],
+            results[group][3]
+        );
+    }
+
+    // A pretty standard Horizontal Bar chart which has two bars that are
+    // showing the results of the 2016 UK Europe referendum/disaster. The
+    // tooltips have HTML in them which is fine because tooltips are
+    // actually just <div> tags.
+    new RGraph.HBar({
+        id: 'barhorizontal',
+        data: [86,81,59,21],
+        options: {
+            xaxisLabelsSize: 8,
+            yaxisLabels: ['Ordinateur portable','Téléphone intelligent', 'Tablette électronique', 'Montre intelligent'],
+            marginTop: 100,
+            xaxis: false,
+            yaxisColor: '#ccc',
+            textColor: '#666',
+            backgroundGridBorder: false,
+            backgroundGridHlines: false,
+            backgroundGridVlinesCount: 18,
+            labelsAbove: true,
+            tooltips: '%{function:getTooltip(%{dataset})}',
+            tooltipsCss: {
+                fontFamily: 'Arial',
+                fontSize: '14pt'
+            },
+            
+            // Use the newer highlight inverting so that the bars that aren't highlighted
+            // are faded out.
+            highlightStyle: 'invert',
+            highlightFill: 'rgba(255,255,255,0.85)',
+
+            title: 'Adoption des Appareils Électroniques\r\npars les Adultes Québecois en 2020',
+            titleBold: true,
+            titleY: '-30',
+            titleHalign: 'center',
+            titleColor: 'black'
+        }
+
+    // Use the grow() animation effect
+    }).grow().responsive([
+        {maxWidth: null, width: 600,height: 275,options: {titleSize: 18,textSize: 14,marginInner: 25,xaxisLabelsCount: 18},css:{'float':'none'}},
+        {maxWidth: 700, width: 400,height: 225,options: {titleSize: 14,textSize: 12,marginInner: 15,xaxisLabelsCount: 9},css:{'float':'none'}}
+    
+    ])
+    
+    // This is a way to specify CSS values for the tooltips. You
+    // should use the JavaScript versions of the CSS names (ie
+    // hyphens are replaced with capital letters as shown below).
+    // A few names are significantly different (eg "float"
+    // becomes "cssFloat")
+    RGraph.tooltips.style.textAlign = 'center';
+}
+
+//Graphique 4 - SemiCircularProgress
+
+const dessinerMaSemiCircularProgress = () => {
+    new RGraph.SVG.SemiCircularProgress({
+        id: 'semicirculaire',
+        min: 0,
+        max: 100,
+        value:30,
+        options: {
+            labelsCenterDecimals: 1,
+            tooltips: 'Progress: %{value}%',
+            tooltipsCss: {
+                backgroundColor: '#333',
+                fontWeight: 'bold',
+                fontSize: '14pt',
+                opacity: 0.85
+            }
+        }
+    }).draw();   
+}
+
+//Graphique 5 - Thermomètre
+
+const dessinerMaThermometer = () => {
+    new RGraph.Thermometer({
+        id: 'canvasThermometre',
+        min: 0,
+        max: 100,
+        value: 80,
+        options: {
+            marginLeft: 40,
+            marginRight: 40,
+            tooltips: '<span style="font-size: 14pt">Todays temperature</span><br/>%{key}',
+            colors: ['red'],
+            tooltipsFormattedKeyLabels: ['London'],
+            tooltipsFormattedUnitsPost: '°',
+            tooltipsCss: {
+                fontSize: '18pt',
+                textAlign: 'left'
+            }
+        }
+    }).draw();
+}
+
+//Graphique 6
+
+const main = () => {
+    dessinerMaTartre();
+    dessinerMaBarVerticale();
+    dessinerMaBarHorizontal();
+    dessinerMaSemiCircularProgress();
+    dessinerMaThermometer();
+}
+
+main();
