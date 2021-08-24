@@ -1,106 +1,73 @@
-const dessinerMaTartre = () => {
-     // A basic configuration for a Pie chart with just the labels
-    // separated out into their own array. This is because the same
-    // array is used for both the labels and the tooltips so
-    // doing this makes for less upkeep when the time comes to
-    // change things around.
-    //
-    // Also note that the stroke color has been set to transparent so
-    // that there's no separation between the segments
-    //
-    labels = [ 'Tomates', 'Choux', 'Brocoli', 'Chou-fleur', 'Friday', 'Saturday', 'Sunday'];
 
-    new RGraph.Pie({
-        id: 'canvasTartre',
-        data: [20,1,1,1,1,1,1],
+//Graphique 1 - Semi Circulaire
+
+const dessinerGraphiqueSemiCirculaire = () => {
+    new RGraph.SemiCircularProgress({
+        id: 'semi-circulaire',
+        min: 0,
+        max: 100,
+        value: 44,
         options: {
-            
-            // This is the tooltip property using formatted tooltips
-            tooltips: '%{property:myDaynames[%{index}]}<br /><span style="font-weight: bold; font-size:26pt">%{value_formatted}</span>',
-            
-            // The units that are appended to the %{value_formatted} value
-            tooltipsFormattedUnitsPost: '%',
-            
-            // Turn the little triangular pointer off
-            tooltipsPointer: false,
-            
-            // Turn fixed positioning off
-            tooltipsPositionStatic: false,
-            
-            // Some CSS values that are set on the tooltips so that you can customise them
+            tooltips: '%{key}',
+            tooltipsFormattedKeyColors: ['red'],
+            tooltipsFormattedKeyLabels: ['Johns progress'],
+            tooltipsFormattedUnitsPost: 'kg',
             tooltipsCss: {
-                backgroundColor: 'white',
-                color: 'black',
-                border: '3px solid black'
+                fontSize: '16pt',
+                boxShadow: '',
+                textAlign: 'left'
             },
-
-            // A custom property - the formatted tooltips can then
-            // access this to use the data inside the tooltip
-            myDaynames: labels,
-
-            shadow: false,
-            colorsStroke: 'transparent',
-            keyPositionGraphBoxed: false,
-            
-        }
-    // Draw the chart and add responsive capabilities. On smaller screens the width
-    // is reduced and the labels are changed to a key. This takes up less space.
-    }).draw().responsive([
-        {maxWidth: null,width:550,height:250,options: {centerx: null,key: [],labels: labels},css:{'float':'right'}},
-        {maxWidth: 600,width:420,height:250,options: {centerx: 150,key:labels, labels: []},css:{'float':'none'}}
-    ]);
-}
-
-const dessinerMaBarVerticale = () => {
-    // This Bar chart becomes the background of the progress bar
-    new RGraph.SVG.Bar({
-        id: 'chart-container',
-        data: [100],
-        options: {
-            colors: ['Gradient(#eee:white)'],
-            marginLeft: 45,
-            marginRight: 5,
-            backgroundGrid: true,
-            colorsStroke: '#ccc',
-            marginInner: 10,
-            yaxis: false,
-            yaxisScale: false,
-            xaxis: false,
-            linewidth: .5,
-            shadow: true,
-            shadowOpacity: .1
+            colors: ['Gradient(#faa:red)'],
+            labelsMinSize: 16,
+            labelsMaxSize: 16,
+            labelsCenterSize: 40,
+            labelsCenterUnitsPost: 'kg',
+            colorsStroke: 'rgba(0,0,0,0)'
         }
     }).draw();
+}
 
-    // This Bar chart becomes the inner bar of the progress bar
-    new RGraph.SVG.Bar({
-        id: 'chart-container',
-        data: [73],
+//Graphique 2 - Lignes pleines flotantes 
+
+const dessinerGraphiqueLignesPleinesFlotantes = () => {
+    // Create the Line chart and give it all of the data that's to be shown
+    // on the chart. There's four datasets but so that the lines appear to
+    // be 'floating' the first dataset has a transparent color. The first
+    // line is the bottom edge of the set of lines.
+    new RGraph.SVG.Line({
+        id: 'lignes-pleines-flotantes',
+        data: [
+            [84,65,3,15,12,22,95,5,35,45,85,85,23,45,62,52,45,31,53,66],
+            [64,12,56,25,20,80,85,61,81,56,45,32,91,52,86,23,45,56,51,48],
+            [48,5,23,12,16,36,49,130,52,95,45,21,65,35,28,75,59,74,86,23],
+            [95,65,32,12,100,8,152,63,52,54,85,45,12,13,15,32,64,84,54,66]
+        ],
         options: {
-            yaxisScaleMax: 100,
-            yaxisScaleUnitsPost: '%',
-            yaxisTextColor: '#666',
-            yaxis: false,
+            filled: true,
+            filledAccumulative: true,
+            
+            // Here's the colors being set - note the first is transparent
+            // so we don't see it.
+            colors: ['transparent', '#FDA354', '#C4D6ED', '#609EC8'],
+
+            spline: true,
+
+            // Turn off the background grid vertical lines and its border
+            backgroundGridVlines: false,
+            backgroundGridBorder: false,
+
             xaxis: false,
-            shadow: true,
-            shadowOffsetx: 1,
-            shadowOffsety: 1,
-            shadowBlur: 1,
-            titleColor: '#666',
-            colors: ['Gradient(red:#fcc)'],
-            backgroundGrid: false,
-            tooltips: ['Monday was an average day'],
-            tooltipsCss: {
-                backgroundColor: '#333',
-                fontWeight: 'bold',
-                fontSize: '14pt',
-                opacity: 0.85
-            },
-            marginLeft: 45,
-            marginRight: 5,
-            marginInner: 15
+            yaxis: false,
+            textSize: 10,
+            xaxisLabels: ['01','02','03','04','05','06','07','08','09','10','11','12','13','14','15','16','17','18','19','20']
         }
-    }).grow();
+    
+    // Animate the chart with the trace() effect and add some responsive capability to
+    // accommodate both large and small screens
+    }).trace().responsive([
+        {maxWidth:null,width:600,height:250,css:{'float':'right'}},
+        {maxWidth:800, width:450,height:200,css:{'float':'none'}}
+    ]);
 }
 
 //Graphique 3 - BarHorizontal
@@ -156,9 +123,10 @@ const dessinerMaBarHorizontal = () => {
             highlightStyle: 'invert',
             highlightFill: 'rgba(255,255,255,0.85)',
 
-            title: 'Adoption des Appareils Électroniques\r\npars les Adultes Québecois en 2020',
+            title: 'Adoption des Appareils Électroniques en %\r\npar les Adultes Québecois en 2020',
             titleBold: true,
             titleY: '-30',
+            titleX: '-75',
             titleHalign: 'center',
             titleColor: 'black'
         }
@@ -178,26 +146,7 @@ const dessinerMaBarHorizontal = () => {
     RGraph.tooltips.style.textAlign = 'center';
 }
 
-//Graphique 4 - SemiCircularProgress
-
-const dessinerMaSemiCircularProgress = () => {
-    new RGraph.SVG.SemiCircularProgress({
-        id: 'semicirculaire',
-        min: 0,
-        max: 100,
-        value:30,
-        options: {
-            labelsCenterDecimals: 1,
-            tooltips: 'Progress: %{value}%',
-            tooltipsCss: {
-                backgroundColor: '#333',
-                fontWeight: 'bold',
-                fontSize: '14pt',
-                opacity: 0.85
-            }
-        }
-    }).draw();   
-}
+//Graphique 4 - A faire ( avec données,  normal =/ SVG)
 
 //Graphique 5 - Thermomètre
 
@@ -222,14 +171,104 @@ const dessinerMaThermometer = () => {
     }).draw();
 }
 
-//Graphique 6
+//Graphique 6 - Lignes et barres 
+
+const dessinerGraphiqueLignesEtBarres = () => {
+    // This is the data for the red angled Line. A single array
+    // of lots of datapoints.
+    data = [
+        1,3,2,5,4,2,3,5,6,5,
+        4,6,7,5,6,8,7,5,8,6,
+        8,9,6,8,7,8,9,10,11,13,
+        9,11,10,13,12,11,10,11,13,11
+    ];
+    
+    // Now create the spline array - which is done by looping through
+    // the data array and setting the value to 1 less.
+    spline = [];
+    
+    data.forEach (function (v, k, arr)
+    {
+        spline[k] = v - 1;
+    });
+
+    // Create the red angled Line using the original data array.
+    // No axes are specified and the labels are set to use the
+    // same spacing and positioning as the Scatter chart. The
+    // labels are slightly smaller than the default.
+    new RGraph.SVG.Line({
+        id: 'lignes-et-barres',
+        data: data,
+        options: {
+            backgroundGridVlines: false,
+            backgroundGridBorder: false,
+            yaxis: false,
+            xaxis: false,
+            xaxisLabels: ['Q1','Q2','Q3','Q4'],
+            xaxisLabelsPosition: 'section',
+            xaxisLabelsPositionSectionTickmarksCount: 4,
+            textSize: 10,
+            yaxisScaleMax: 15
+        }
+    }).draw();
+
+    // This is the spline chart which shows the data that's generated
+    // above. It doesn't have the backgroundGrid, the axes or the
+    // yaxisScale enabled.
+    new RGraph.SVG.Line({
+        id: 'lignes-et-barres',
+        data: spline,
+        options: {
+            colors: ['rgba(0,0,0,0.25)'],
+            spline: true,
+            backgroundGrid: false,
+            xaxis: false,
+            yaxis: false,
+            yaxisScale: false,
+            yaxisScaleMax: 15
+        }
+    }).draw();
+    
+    // The Bar chart. The backgroundGrid, the axes and the Y axis
+    // scale are disabled. The maximum value, like the Line charts
+    // above, is set to 15.
+    new RGraph.SVG.Bar({
+        id: 'lignes-et-barres',
+        data:[
+            5,8,6,3,5,4,2,5,8,4,
+            4,6,3,5,6,5,2,4,5,8,
+            1,9,4,6,8,5,2,3,5,6,
+            4,8,6,4,4,3,2,1,5,4,
+            7,6,8,5,4,5,9,9,8,6,
+            7,6,8,5,4,5,9,9,8,6,
+            7,6,8,5,4,5,9,9,8,6,
+            1,3,2,5,4,9,1,2,3,5
+        ],
+        options: {
+            marginTop: 125,
+            backgroundGrid: false,
+            colors: ['rgba(0,0,0,0.25)'],
+            xaxis: false,
+            yaxis: false,
+            yaxisScale: false,
+            yaxisScaleMax: 15,
+            marginInner: 1
+        }
+    
+    // Draw the chart and add some responsive capability
+    }).draw().responsive([
+        {maxWidth:null,width:600,height:250,css:{'float':'right'}},
+        {maxWidth:900,width:400,height:200,css:{'float':'none'}}
+    ]);
+}
 
 const main = () => {
-    dessinerMaTartre();
-    dessinerMaBarVerticale();
     dessinerMaBarHorizontal();
-    dessinerMaSemiCircularProgress();
     dessinerMaThermometer();
+    dessinerGraphiqueSemiCirculaire();
+    dessinerGraphiqueLignesPleinesFlotantes();
+    dessinerGraphiqueLignesEtBarres();
 }
 
 main();
+

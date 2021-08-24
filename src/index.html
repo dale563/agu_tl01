@@ -7,17 +7,6 @@
     <title>RGRAPH</title>
     <link rel="stylesheet" href="assets/styles/index.css">
     <style>
-
-        #chart-container {
-            height: 500px;
-            width: 100px;
-        }
-
-        #semicirculaire {
-            height: 250px;
-            width: 500px;
-        }
-
     </style>
 </head>
 <body>
@@ -36,28 +25,31 @@
     </header>
     <main>
         <article id="article-graphique-1">
-            <h2>Graphique 1</h2>
-            <canvas id="canvasTartre" width="350" height="250">
+            <h2>Graphique 1 : Semi-circulaire</h2>
+            <canvas id="semi-circulaire" height="200" width="500">
                 [No canvas support]
             </canvas>
         </article>
         <article id="article-graphique-2">
-            <h2>Graphique 2</h2>
-            <div id="chart-container">
+            <h2>Graphique 2 : Lignes pleines flottantes (SVG)</h2>
+            <div id="lignes-pleines-flotantes">
             </div>
         </article>
-
+        
     <!--  Graphique 3 - Bar horizontal -->       
         <article id="article-graphique-3">
             <h2>Graphique 3 : Bar Horizontal</h2>
             <canvas id="barhorizontal" width="600" height="400">
                 [No canvas support]
             </canvas>
+            <small>
+                Donnée provenant du document suivant : <a href="assets/docs/netendances-2020-portrait-numerique-des-foyers-quebecois.pdf" titre="accéder au fichier pdf Netendances 2020: Portrait numérique des foyers Québécois">Netendances 2020: Portrait numérique des foyers Québécois</a>
+            </small>
         </article>
 
-    <!--  Graphique 4 - Semicircular --> 
+    <!--  Graphique 4 - A faire --> 
         <article id="article-graphique-4">
-            <h2>Graphique 4 : Semi-circular Progress bar</h2>
+            <h2>Graphique 4 : A faire</h2>
             <div id="semicirculaire"></div>
         </article>
 
@@ -71,7 +63,10 @@
 
 
         <article id="article-graphique-6">
-            <h2>Graphique 6</h2>
+            <h2>Graphique 6 : Lignes et barres (SVG)</h2>
+            <div id="lignes-et-barres">
+
+            </div>
         </article>
     </main>
     
@@ -84,14 +79,13 @@
     <script src="./assets/scripts/RGraph.svg.common.core.js"></script>
     <script src="./assets/scripts/RGraph.common.dynamic.js"></script>
     <script src="./assets/scripts/RGraph.common.tooltips.js"></script>
-    <script src="./assets/scripts/RGraph.pie.js"></script>
     <script src="./assets/scripts/RGraph.svg.common.tooltips.js"></script>
     <script src="./assets/scripts/RGraph.svg.bar.js"></script>
-    <script src="./assets/scripts/RGraph.svg.semicircularprogress.js"></script>
     <script src="./assets/scripts/RGraph.semicircularprogress.js"></script>
     <script src="./assets/scripts/RGraph.thermometer.js"></script>
     <script src="./assets/scripts/RGraph.bar.js"></script>
     <script src="./assets/scripts/RGraph.hbar.js"></script>
+    <script src="./assets/scripts/RGraph.svg.line.js"></script>
     <script src="./assets/scripts/index.js"></script>
 </body>
 </html>
