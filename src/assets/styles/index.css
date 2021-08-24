@@ -9,9 +9,14 @@ html, body {
     margin:0;
     padding:0;
 }
+
+html {
+    font-size: 16px;
+}
+
 body {
     display:grid;
-    height: 250px;
+    min-height: 100vh;
     grid-template-rows: auto 1fr auto;
     text-align: center;
     color: darkblue;
@@ -31,7 +36,7 @@ body > header {
 }
 
 h1 {
-    margin: 60px 30px;
+    margin: 60px 30px 30px;
 }
 
 nav {
@@ -41,6 +46,7 @@ nav {
 
 nav > ul {
     display: flex;
+    flex-direction: column;
     flex-wrap: wrap;
     align-content: space-around;
     list-style-type: none;
@@ -51,11 +57,14 @@ nav > ul {
 nav > ul > li {
     flex-grow: 1;
     color: wheat;
+    padding: 15px;
+    
 }
 
 a {
     text-decoration: none;
     font-weight: bold;
+    padding:10px;
 }
 
 a:link {
@@ -65,14 +74,20 @@ a:link {
 a:focus, a:hover {
     color: rgb(137, 34, 240);
     text-shadow: 2px 2px 4px #00000045;
+}
+
+nav > ul > li a:focus, nav > ul > li a:hover {
     background-color: rgba(255, 255, 255, 0.858);
-    padding: 10px;
 }
 
 /* FIN HEADER */
 
 body > main {
     grid-row: 2 / 3;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    /* width: 100vw; */
 }
 
 
@@ -84,6 +99,52 @@ body > footer {
     color: white;
 }
 
+article {
+   margin: 60px 30px;
+}
+
+small {
+    display: block;
+    clear:both;
+}
+
+small a {
+    padding:0;
+    
+}
+
+#semicirculaire {
+    height: 250px;
+    width: 500px;
+}
+
+#lignes-pleines-flotantes {
+    height: 500px;
+    width: 100px;
+}
+#lignes-et-barres {
+    height: 200px;
+    width: 500px;
+}
+
+@media screen and (min-width: 592px) { 
+    
+    h1 {
+        margin: 60px 30px;
+    }
+
+    nav > ul {
+        display:flex;
+        flex-direction: row;
+    }
+
+    nav > ul > li {
+        padding: 0px;
+    }
+
+}
+
+
 @media screen and (min-width: 800px) { 
 
     body > footer {
@@ -93,5 +154,7 @@ body > footer {
 
     body > footer > p {
         flex-grow: 1;
-    }
+    }    
 }
+
+
