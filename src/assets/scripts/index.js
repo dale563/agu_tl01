@@ -148,6 +148,29 @@ const dessinerMaBarHorizontal = () => {
 
 //Graphique 4 - A faire ( avec données,  normal =/ SVG)
 
+const dessinerMonDiagrammeEnRose = () => {
+    // This is a simple example of the Rose chart that's been configured
+    // with some labels that are positioned around the Rose chart.
+    rose = new RGraph.Rose({
+        id: 'rose',
+        data: [0,2,9,21,51,215,730,4402,3646],
+        options: {
+            labels: ['0-9 ans','10-19 ans','20-29 ans','40-49 ans','50-59 ans','60-69 nas', '70-79 ans', '80-89 ans', '90 ans et plus'],
+            title: 'Nombre cumulatif de décès liés à la COVID-19 au Québec selon le groupe d’âge',
+            titleBold: true,
+            titleY: '-40',
+            titleHalign: 'center',
+            titleColor: 'black'
+        }
+    
+    // Draw the chart and add some responsive capabilities. The chart doesn't change much - it
+    // mostly just reduces in size.
+    }).draw().responsive([
+        {maxWidth: null,width:600,height:400,options:{textSize:12},css:{'float':'right'}},
+        {maxWidth: 700,width:400,height:300,options:{textSize:10},css:{'float':'none'}}
+    ]);
+}
+
 //Graphique 5 - Thermomètre
 
 const dessinerMaThermometer = () => {
@@ -266,6 +289,7 @@ const main = () => {
     dessinerMaBarHorizontal();
     dessinerMaThermometer();
     dessinerGraphiqueSemiCirculaire();
+    dessinerMonDiagrammeEnRose();
     dessinerGraphiqueLignesPleinesFlotantes();
     dessinerGraphiqueLignesEtBarres();
 }
