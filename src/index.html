@@ -11,7 +11,7 @@
 </head>
 <body>
     <header>
-        <h1>Travail long 01 - 6 graphiques rgraph</h1>
+        <h1>Travail long 01<br>(6 graphiques rgraph)</h1>
         <nav id="navigation-principale">
             <ul>
                 <li><a href="#article-graphique-1">Graphique 1</a></li>
@@ -43,14 +43,20 @@
                 [No canvas support]
             </canvas>
             <small>
-                Donnée provenant du document suivant : <a href="assets/docs/netendances-2020-portrait-numerique-des-foyers-quebecois.pdf" titre="accéder au fichier pdf Netendances 2020: Portrait numérique des foyers Québécois">Netendances 2020: Portrait numérique des foyers Québécois</a>
+                Donnée provenant du document suivant : <a href="assets/docs/netendances-2020-portrait-numerique-des-foyers-quebecois.pdf" titre="accéder au fichier pdf Netendances 2020: Portrait numérique des foyers Québécois" target="_blank">Netendances 2020: Portrait numérique des foyers Québécois</a>
             </small>
         </article>
 
-    <!--  Graphique 4 - A faire --> 
+    <!--  Graphique 4 - Rose chart--> 
         <article id="article-graphique-4">
-            <h2>Graphique 4 : A faire</h2>
-            <div id="semicirculaire"></div>
+            <h2>Graphique 4 : Diagramme en rose</h2>
+            <canvas id="rose" width="300" height="500">
+                [No canvas support]
+            </canvas>
+            <small>
+                Donnée provenant de <abbr title="Institut national de santé publique du Québec">INSPQ</abbr>: <a href="https://www.inspq.qc.ca/covid-19/donnees/age-sexe" titre="accéder à la page sur les données par âge et sexe sur la COVID-19 de l'Institut national de santé publique du Québec" target="_blank">Données COVID-19 par âge et sexe au Québec</a>
+            </small>
+            
         </article>
 
     <!--  Graphique 5 - Thermomètre -->    
@@ -60,12 +66,9 @@
                 [No canvas support]
             </canvas>
         </article>
-
-
         <article id="article-graphique-6">
             <h2>Graphique 6 : Lignes et barres (SVG)</h2>
             <div id="lignes-et-barres">
-
             </div>
         </article>
     </main>
@@ -86,6 +89,7 @@
     <script src="./assets/scripts/RGraph.bar.js"></script>
     <script src="./assets/scripts/RGraph.hbar.js"></script>
     <script src="./assets/scripts/RGraph.svg.line.js"></script>
+    <script src="./assets/scripts/RGraph.rose.js"></script>
     <script src="./assets/scripts/index.js"></script>
 </body>
 </html>
